@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Job Portal Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a full-stack job portal website developed using React.js on the frontend.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Admin Panel**: Allows administrators to add, delete, and edit job openings.
+- **User Interface**: Provides users with an interface to view job listings and apply for positions.
+- **Responsive Design**: Ensures compatibility with various devices and screen sizes.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React.js**: Frontend framework for building the user interface.
+- **Bootstrap**: Frontend component library for styling and layout.
+- **Axios**: Library for making HTTP requests to interact with the backend.
+- **React Router**: Library for handling routing within the application.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## How to Run
 
-### `npm test`
+1. Clone the repository.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Navigate to the project directory.
 
-### `npm run build`
+3. Install dependencies.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Start the development server.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Admin
+As an admin, you have access to the admin panel where you can manage job openings. Follow these steps:
 
-### `npm run eject`
+1. Navigate to the admin panel by clicking on the "Admin Panel" link in the navigation menu.
+2. Log in using your admin credentials.
+3. Once logged in, you can perform the following actions:
+   - Add a new job opening: Click on the "Add Job" button and fill out the necessary details.
+   - Delete a job opening: Click on the delete icon next to the job opening you want to remove.
+   - Edit job details: Click on the edit icon next to the job opening you want to modify, make the necessary changes, and save.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### User
+As a user, you can browse job listings, view job details, and apply for positions. Here's how:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Navigate to the home page.
+2. Browse through the list of job openings displayed on the page.
+3. Click on a job listing to view its details.
+4. If interested, click on the "Apply Now" button to submit your application.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Contributors
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- MD  ADIL ALAM
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
