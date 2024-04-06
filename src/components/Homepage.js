@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Spinner from './icons/Spinner';
+import ShowDetails from './modals/ShowDetails';
 
 export default function Homepage() {
     const apiUrl = process.env.REACT_APP_API_URL;
     const [jobs, setJobs] = useState([]);
-    const [processing, setProcessing] = useState(false);
+    const [jobDetails, setJobDetails] = useState([]);
 
     const getAllOpenings = async () => {
         try {
@@ -23,10 +24,16 @@ export default function Homepage() {
     }
 
     function handleApply() {
-
+        alert('Applied');
     }
-    function handleShowDetails() {
-
+    async function handleShowDetails(jobId) {
+        try {
+            const jobDetails = await jobs.find(el => el._id === jobId);
+            setJobDetails(jobDetails);
+        } catch (error) {
+            console.log(error);
+            alert('Something went wrong');
+        }
     }
 
     useEffect(() => {
@@ -35,6 +42,7 @@ export default function Homepage() {
 
     return (
         <>
+            <ShowDetails job={jobDetails} />
             <section style={{ backgroundColor: "#ffffff" }}>
                 <div className="container py-5">
                     <h1 className='mt-3'>Job Openings <small className='h6 text-secondary'>&nbsp; &nbsp; {jobs === null ? 0 : jobs.length} - post</small></h1>
@@ -48,11 +56,19 @@ export default function Homepage() {
                                         <div className="card-body">
                                             <div className="row">
                                                 <div className="col-md-6 col-lg-6 col-xl-6">
-                                                    <p><span className='bold h5'>{item.designation}</span>&nbsp;<span className='fs-6'> ID: {item._id.substring(16,22).toUpperCase()}</span></p>
-                                                    <p className='text-secondary'>{item.company}</p>
+                                                    <p><span className='bold h5'>{item.designation}</span>&nbsp;<span className='fs-6'> ID: {item._id.substring(16, 22).toUpperCase()}</span></p>
+
                                                     <div className="row">
-                                                        <div className="col-3 text-secondary bold">Salary: </div>
-                                                        <div className="col-9 dfjsac"><strong>{item.salary}</strong>/month</div>
+                                                        <div className="col-3 text-secondary bold">Company: </div>
+                                                        <div className="col-3 dfjsac"><span>{item.company}</span></div>
+                                                        <div className="col-3"></div>
+                                                        <div className="col-3"></div>
+                                                    </div>
+                                                    <div className="row">
+                                                        <div className="col-3 text-secondary bold">Location: </div>
+                                                        <div className="col-3 dfjsac"><span>{item.location}</span></div>
+                                                        <div className="col-3 text-secondary bold dfjeac">Salary: </div>
+                                                        <div className="col-3 dfjsac"><strong>{item.salary}</strong>/month</div>
                                                     </div>
 
                                                 </div>
@@ -66,7 +82,7 @@ export default function Homepage() {
                                                     </div>
                                                     <div className="row">
                                                         <div className="col dfjcac">
-                                                            <button onClick={() => { handleShowDetails(item._id) }} className="btn btn-outline-primary w-50 btn-sm mt-2 bold fs-5 rounded" type="button">
+                                                            <button onClick={() => { handleShowDetails(item._id) }} className="btn btn-outline-primary w-50 btn-sm mt-2 bold fs-5 rounded" type="button" data-bs-toggle="modal" data-bs-target="#jobDetailsModal">
                                                                 Show Details
                                                             </button>
                                                         </div>

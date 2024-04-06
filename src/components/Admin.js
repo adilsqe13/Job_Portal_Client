@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Spinner from './icons/Spinner';
+import AddOpenings from './modals/AddOpenings';
+import EditJobDetails from './modals/EditJobDetails';
 
 export default function Homepage() {
     const apiUrl = process.env.REACT_APP_API_URL;
+    const adminAuthToken = localStorage.getItem('adminAuthToken');
     const navigate = useNavigate();
     const [jobs, setJobs] = useState([]);
     const [processing, setProcessing] = useState(false);
@@ -24,10 +27,33 @@ export default function Homepage() {
         }
     }
 
-    function handleEdit() {
-
+    async function handleEdit(jobId) {
+        localStorage.setItem('editJobDetailsId', jobId);
     }
-    function handleDelete() {
+
+    async function handleDelete(jobId) {
+        setProcessing(true);
+        try {
+            const response = await fetch(`${apiUrl}/api/jobs/delete-job/${jobId}`, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": adminAuthToken
+                },
+            });
+            const json = await response.json();
+            if (json.success) {
+                window.location.reload();
+                setProcessing(false);
+            } else {
+                alert('Something went wrong');
+                setProcessing(false);
+            }
+        } catch (error) {
+            setProcessing(false);
+            console.log(error);
+            alert('Something went wrong');
+        }
 
     }
 
@@ -41,9 +67,19 @@ export default function Homepage() {
 
     return (
         <>
+        <AddOpenings />
+        <EditJobDetails />
             <section style={{ backgroundColor: "#ffffff" }}>
                 <div className="container py-5">
                     <h1 className='mt-3'>Listed Openings <small className='h6 text-secondary'>&nbsp; &nbsp; {jobs === null ? 0 : jobs.length} - post</small></h1>
+                    <div className="row p-2">
+                        <div className="col-sm-9"></div>
+                        <div className="col-sm-3 dfjeat addTaskbtn-div">
+                            <button type="button" className="btn bg-danger text-light bold addTaskBtn" data-bs-toggle="modal" data-bs-target="#addJobModal">
+                                Add Job
+                            </button>
+                        </div>
+                    </div>
                     <div className="row justify-content-center mb-3 mt-4">
 
                         <h5 className='text-danger text-align-center dfjcac'>{jobs === null ? '' : jobs.length === 0 ? 'No Openings' : ''}</h5>
@@ -58,21 +94,23 @@ export default function Homepage() {
                                                     <p className='text-secondary'>{item.company}</p>
                                                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia quia illum tenetur. Quod earum harum mollitia praesentium cupiditate laudantium et facere explicabo blanditiis. Fuga, consequatur placeat dolore animi doloremque similique saepe architecto sapiente ex, provident quidem odio voluptas quae quisquam tenetur magni. Corporis modi illo saepe labore corrupti. Mollitia, tempore cupiditate corporis repudiandae porro, temporibus omnis obcaecati eius recusandae beatae ex. Ratione quo corporis ipsa quibusdam, nisi, odit recusandae dolorum error corrupti distinctio natus voluptates illum aliquid excepturi nihil nobis quis vel est fugit aperiam voluptate magnam unde debitis culpa. Tenetur in aliquid odit voluptatum maxime hic odio consectetur vero?</p>
                                                     <div className="row">
-                                                        <div className="col-3 text-secondary bold">Salary: </div>
-                                                        <div className="col-9 dfjsac"><strong>{item.salary}</strong>/month</div>
+                                                        <div className="col-3 text-secondary bold dfjeac">Location: </div>
+                                                        <div className="col-3 dfjsac"><span>{item.location}</span></div>
+                                                        <div className="col-3 text-secondary bold dfjeac">Salary: </div>
+                                                        <div className="col-3 dfjsac"><strong>{item.salary}</strong>/month</div>
                                                     </div>
 
                                                 </div>
                                             </div>
                                             <div className="row mt-3">
                                                 <div className="col-6 dfjcac">
-                                                    <button onClick={() => { handleEdit(item._id) }} className="btn btn-outline-info w-50 btn-sm mt-2 bold fs-5 rounded" type="button">
+                                                    <button onClick={() => { handleEdit(item._id) }} className="btn btn-info w-50 btn-sm mt-2 bold fs-5 rounded" type="button" data-bs-toggle="modal" data-bs-target="#editJobModal">
                                                         Edit
                                                     </button>
                                                 </div>
                                                 <div className="col-6 dfjcac">
-                                                    <button onClick={() => { handleDelete(item._id) }} className="btn btn-outline-danger w-50 btn-sm mt-2 bold fs-5 rounded" type="button">
-                                                        Delete
+                                                    <button onClick={() => { handleDelete(item._id) }} className="btn btn-danger w-50 btn-sm mt-2 bold fs-5 rounded" type="button">
+                                                        {processing === true ? <Spinner height='30' width='30' /> : 'Delete'}
                                                     </button>
                                                 </div>
                                             </div>

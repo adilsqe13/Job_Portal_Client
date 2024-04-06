@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Spinner from '../icons/Spinner';
 
+
 export default function AddOpenings() {
     const apiUrl = process.env.REACT_APP_API_URL;
     const jobObject = {
