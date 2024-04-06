@@ -92,7 +92,7 @@ export default function Homepage() {
                                                 <div className="col-md-12 col-lg-12 col-xl-12">
                                                     <p><span className='bold h5'>{item.designation}</span>&nbsp;<span className='fs-6'> ID: {item._id.substring(16, 22).toUpperCase()}</span></p>
                                                     <p className='text-secondary'>{item.company}</p>
-                                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia quia illum tenetur. Quod earum harum mollitia praesentium cupiditate laudantium et facere explicabo blanditiis. Fuga, consequatur placeat dolore animi doloremque similique saepe architecto sapiente ex, provident quidem odio voluptas quae quisquam tenetur magni. Corporis modi illo saepe labore corrupti. Mollitia, tempore cupiditate corporis repudiandae porro, temporibus omnis obcaecati eius recusandae beatae ex. Ratione quo corporis ipsa quibusdam, nisi, odit recusandae dolorum error corrupti distinctio natus voluptates illum aliquid excepturi nihil nobis quis vel est fugit aperiam voluptate magnam unde debitis culpa. Tenetur in aliquid odit voluptatum maxime hic odio consectetur vero?</p>
+                                                    <p>{item.description}</p>
                                                     <div className="row">
                                                         <div className="col-3 text-secondary bold dfjeac">Location: </div>
                                                         <div className="col-3 dfjsac"><span>{item.location}</span></div>

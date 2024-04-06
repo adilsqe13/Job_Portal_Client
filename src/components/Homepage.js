@@ -59,9 +59,9 @@ export default function Homepage() {
                                                     <p><span className='bold h5'>{item.designation}</span>&nbsp;<span className='fs-6'> ID: {item._id.substring(16, 22).toUpperCase()}</span></p>
 
                                                     <div className="row">
-                                                        <div className="col-3 text-secondary bold">Company: </div>
+                                                        <div className="col-4 text-secondary bold">Company: </div>
                                                         <div className="col-3 dfjsac"><span>{item.company}</span></div>
-                                                        <div className="col-3"></div>
+                                                        <div className="col-2"></div>
                                                         <div className="col-3"></div>
                                                     </div>
                                                     <div className="row">
