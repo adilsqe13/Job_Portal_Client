@@ -65,9 +65,9 @@ export default function Homepage() {
                                                         <div className="col-3"></div>
                                                     </div>
                                                     <div className="row">
-                                                        <div className="col-3 text-secondary bold">Location: </div>
+                                                        <div className="col-4 text-secondary bold">Location: </div>
                                                         <div className="col-3 dfjsac"><span>{item.location}</span></div>
-                                                        <div className="col-3 text-secondary bold dfjeac">Salary: </div>
+                                                        <div className="col-2 text-secondary bold dfjeac">Salary: </div>
                                                         <div className="col-3 dfjsac"><strong>{item.salary}</strong>/month</div>
                                                     </div>
 
